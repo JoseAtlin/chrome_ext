@@ -1,7 +1,7 @@
 {
     "name": "Sign language converter",
     "description": "Translates the selected text to sign language.",
-    "version": "0.1.2",
+    "version": "0.1.4",
     "icons": {
         "128": "sign_language.png"
     },
@@ -11,7 +11,8 @@
     "background": {
         "scripts": [
             "background.js"
-        ]
+        ],
+        "persistent": false
     },
 
     "permissions": [
