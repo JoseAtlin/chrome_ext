@@ -5,18 +5,36 @@ function gotMessage(message, sender, sendResponse) {
 		var selectedText = ""
 		if (window.getSelection)
 			selectedText = window.getSelection().toString()
+
 			
 		if (selectedText.length > 0) {
-			console.log(selectedText)
+			// console.log(selectedText)
 			document.execCommand("copy");
-			text = "Generating the Sign Language for the selected text This will take a few seconds";
+			text = "Generating the Sign Language";
 			sendAlert(text);
+
+			function sleep (time) {
+				return new Promise((resolve) => setTimeout(resolve, time));
+			}
+			
+			sleep(1500).then(() => {
+				window.location.href = "https://en.wikipedia.org/wiki/Main_Page";
+				// window.location.href = "https://en.wikipedia.org/wiki/Main_Page" + selectedText;
+			});
+
 		} else {
 			text = "Ooops...  You have not selected any text"
 			sendAlert(text);
 		}
 	}
 }
+
+function sleep (time) {
+	return new Promise((resolve) => setTimeout(resolve, time));
+  }
+  
+  sleep(500).then(() => {
+  });
 
 function fade(el, speed) {
     var timer;
@@ -73,7 +91,7 @@ function sendAlert(text) {
 
 
 	document.body.appendChild(el);
-	duration = 750;
+	duration = 1500;
 
 	setTimeout(function() {
 		fade(el, 5);
