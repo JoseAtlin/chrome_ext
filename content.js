@@ -1,8 +1,8 @@
 chrome.runtime.onMessage.addListener(gotMessage);
 
+
 function gotMessage(message, sender, sendResponse) {
 	if (message.txt === 'run') {
-		var selectedText = ""
 		if (window.getSelection)
 			selectedText = window.getSelection().toString()
 
@@ -12,14 +12,14 @@ function gotMessage(message, sender, sendResponse) {
 			document.execCommand("copy");
 			text = "Generating the Sign Language";
 			sendAlert(text);
-
+			
 			function sleep (time) {
 				return new Promise((resolve) => setTimeout(resolve, time));
 			}
 			
 			sleep(1500).then(() => {
-				window.location.href = "https://en.wikipedia.org/wiki/Main_Page";
-				// window.location.href = "https://en.wikipedia.org/wiki/Main_Page" + selectedText;
+				window.open("http://localhost/wrapup/avatardemo.php?selectedText=" + selectedText);
+				// window.location.href = "http://localhost/wrapup/avatardemo.php?selectedText=" + selectedText;
 			});
 
 		} else {
@@ -28,13 +28,6 @@ function gotMessage(message, sender, sendResponse) {
 		}
 	}
 }
-
-function sleep (time) {
-	return new Promise((resolve) => setTimeout(resolve, time));
-  }
-  
-  sleep(500).then(() => {
-  });
 
 function fade(el, speed) {
     var timer;
